@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Users</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">Index</li>
+    </ol>
+</nav>
+
+<div class="panel panel-primary">
+    <div class="panel-heading"><h1>Users list</h1></div>
+    <div class="panel-body">
+        <div class="container-flud">
+            <div th:switch="${users}">
+                <h2 th:case="null">No users found!</h2>
+                <div th:case="*">
+                <table class="table table-bordered table-sm">
+                    <caption>List of users</caption>
+                    <thead>
+                    <tr class="table-primary">
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>LinkToDetail</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="user : ${users}">
+                        <td th:text="${user.getId()}">ID</td>
+                        <td th:text="${user.getUserName()}">FN</td>
+                        <td><a th:href="@{user-show/{id} (id=${user.getId()})}" th:text="${user.getNamedLink}">user</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<a th:href="@{/user-create}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Create New User</a>
+
+
+<br/>
+<hr/>
+<br/>
+</body>
+</html>

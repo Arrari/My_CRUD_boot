@@ -1,0 +1,14 @@
+# MySQL properties
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.url=YOUR URL
+spring.datasource.username=YOUR USERNAME
+spring.datasource.password=YOUR PASSWORD
+
+#hibernate
+spring.jpa.hibernate.ddl-auto=create-drop
+spring.jpa.show-sql=true
+
+#HTTP hidden methods
+spring.mvc.hiddenmethod.filter.enabled=true
+logging.level.org.springframework.web.filter.CommonsRequestLoggingFilter=DEBUG
+
