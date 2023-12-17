@@ -2,9 +2,11 @@ package com.example.my_crud_boot.controller;
 
 import com.example.my_crud_boot.model.User;
 import com.example.my_crud_boot.service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,7 +25,7 @@ public class UserController {
     }
 
 
-    @GetMapping("/users")
+    @GetMapping(value = {"/users","/"})
     public String findAll(Model model) {
         model.addAttribute("users", userService.getAllUsers());
         return "user-list";
@@ -34,7 +36,10 @@ public class UserController {
         return "user-create";
     }
     @PostMapping("/user-create")
-    public String createUser(User user) {
+    public String createUser(@Valid User user, BindingResult result) {
+        if (result.hasErrors()) {
+            return "user-create";
+        }
         userService.addUser(user);
         return "redirect:/users";
     }

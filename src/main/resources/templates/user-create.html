@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<style>
+    .error {
+        color: maroon;
+    }
+</style>
 <head>
     <meta charset="UTF-8">
     <title>New User</title>
@@ -29,15 +34,17 @@
             <label class="sr-only" for="inlineFormInputName2">First name: </label>
             <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" th:field="*{firstName}"
                    placeholder="First Name">
+            <p th:if="${#fields.hasErrors('firstName')}" th:errorclass="error" th:errors="*{firstName}" />
 
             <label class="sr-only" for="inlineFormInputName3">Last name:</label>
             <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName3" th:field="*{lastName}"
                    placeholder="Last Name">
+            <p th:if="${#fields.hasErrors('lastName')}" th:errorclass="error" th:errors="*{lastName}" />
 
             <label class="sr-only" for="inlineFormInputName4">email: </label>
             <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName4" th:field="*{email}"
                    placeholder="Email@domain.com">
-
+            <p th:if="${#fields.hasErrors('email')}" th:errorclass="error" th:errors="*{email}" />
             <label class="sr-only" for="inlineFormInputGroupUsername2">Username</label>
             <div class="input-group mb-2 mr-sm-2">
                 <div class="input-group-prepend">
@@ -45,6 +52,7 @@
                 </div>
                 <input type="text" class="form-control" id="inlineFormInputGroupUsername2" th:field="*{userName}" placeholder="userName">
             </div>
+            <p th:if="${#fields.hasErrors('userName')}" th:errorclass="error" th:errors="*{userName}" />
 
             <button type="submit" class="btn btn-primary mb-2">Submit</button>
         </form>
