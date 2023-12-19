@@ -19,9 +19,4 @@ public class User {
     private String email;
     @Column(name = "USERNAME")
     private String userName;
-
-    public String getNamedLink() {
-        return "Link to " + this.firstName + "'s page";
-    }
-
 }

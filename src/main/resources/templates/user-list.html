@@ -34,7 +34,7 @@
                     <tr th:each="user : ${users}">
                         <td th:text="${user.getId()}">ID</td>
                         <td th:text="${user.getUserName()}">FN</td>
-                        <td><a th:href="@{user-show/{id} (id=${user.getId()})}" th:text="${user.getNamedLink}">user</a></td>
+                        <td><a th:href="@{user-show/{id} (id=${user.getId()})}" class="btn btn-info active" role="button" aria-pressed="true">Link to user details page!</a></td>
                     </tr>
                     </tbody>
                 </table>
